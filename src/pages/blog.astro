@@ -1,5 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import Post from '../components/Post.astro'
+
+import type { Post as PostType } from '../models/Post'
+
+const url = `${import.meta.env.PUBLIC_API_URL}/posts?populate=image`
+const {
+  data,
+}: {
+  data: Array<{
+    id: number
+    attributes: PostType
+  }>
+} = await fetch(url).then(res => res.json())
 ---
 
 <Layout
@@ -8,6 +21,10 @@ import Layout from '../layouts/Layout.astro'
 >
   <main class="contenedor">
     <h1 class="heading">Blog</h1>
+
+    <div class="grid">
+      {data?.map(post => <Post post={post.attributes} />)}
+    </div>
   </main>
 </Layout>
 
