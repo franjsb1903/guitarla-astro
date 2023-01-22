@@ -8,13 +8,14 @@ export interface Guitar {
   url: string
   image: {
     data: {
-        attributes: {
-            formats: {
-                medium: {
-                    url: string
-                }
-            }
+      attributes: {
+        formats: {
+          medium: {
+            url: string
+          }
         }
+        url: string
+      }
     }
   }
 }

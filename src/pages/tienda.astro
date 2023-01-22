@@ -2,8 +2,17 @@
 import Layout from '../layouts/Layout.astro'
 import Guitar from '../components/Guitar.astro'
 
+import type { Guitar as GuitarType } from '../models/Guitar'
+
 const url = `${import.meta.env.PUBLIC_API_URL}/guitars?populate=image`
-const { data }: {data: Array<any>} = await fetch(url).then((res) => res.json())
+const {
+  data,
+}: {
+  data: Array<{
+    id: number
+    attributes: GuitarType
+  }>
+} = await fetch(url).then(res => res.json())
 ---
 
 <Layout
@@ -14,11 +23,7 @@ const { data }: {data: Array<any>} = await fetch(url).then((res) => res.json())
     <h1 class="heading">Nuestra Colección</h1>
 
     <div class="grid">
-      {
-        data?.map(guitar => (
-          <Guitar guitar={guitar.attributes} />
-        ))
-      }
+      {data?.map(guitar => <Guitar guitar={guitar.attributes} />)}
     </div>
   </main>
 </Layout>
