@@ -18,3 +18,10 @@ export interface Post {
     }
   }
 }
+
+export interface PostResponse {
+  data: Array<{
+    id: number
+    attributes: Post
+  }>
+}

@@ -19,3 +19,10 @@ export interface Guitar {
     }
   }
 }
+
+export interface GuitarResponse {
+  data: Array<{
+    id: number
+    attributes: Guitar
+  }>
+}
