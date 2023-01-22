@@ -2,17 +2,27 @@
 import Layout from '../layouts/Layout.astro'
 import Guitar from '../components/Guitar.astro'
 import Post from '../components/Post.astro'
+import Course from '../components/Course.astro'
 
 import type { GuitarResponse } from '../models/Guitar'
 import type { PostResponse } from '../models/Post'
+import type { CourseResponse } from '../models/Course'
 
-const urlGuitarras = `${import.meta.env.PUBLIC_API_URL}/guitars?populate=image`
+const urlGuitars = `${import.meta.env.PUBLIC_API_URL}/guitars?populate=image`
 const urlBlogs = `${import.meta.env.PUBLIC_API_URL}/posts?populate=image`
+const urlCourse = `${import.meta.env.PUBLIC_API_URL}/course?populate=image`
 
-const [{ data: guitars }, { data: posts }] = (await Promise.all([
-  fetch(urlGuitarras).then(res => res.json()),
+const [
+  { data: guitars },
+  { data: posts },
+  {
+    data: { attributes: course },
+  },
+] = (await Promise.all([
+  fetch(urlGuitars).then(res => res.json()),
   fetch(urlBlogs).then(res => res.json()),
-])) as [GuitarResponse, PostResponse]
+  fetch(urlCourse).then(res => res.json()),
+])) as [GuitarResponse, PostResponse, CourseResponse]
 ---
 
 <Layout
@@ -26,6 +36,8 @@ const [{ data: guitars }, { data: posts }] = (await Promise.all([
       {guitars?.map(guitar => <Guitar guitar={guitar.attributes} />)}
     </div>
   </main>
+
+  <Course course={course} />
 
   <section class="contenedor">
     <h2 class="heading">Blog</h2>

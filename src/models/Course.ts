@@ -1,18 +1,17 @@
 import { CommonImage } from './CommonImage'
 
-export interface Post {
+export interface Course {
   title: string
   content: string
-  url: string
   createdAt: Date
   updatedAt: Date
   publishedAt: Date
   image: CommonImage
 }
 
-export interface PostResponse {
-  data: Array<{
+export interface CourseResponse {
+  data: {
     id: number
-    attributes: Post
-  }>
+    attributes: Course
+  }
 }

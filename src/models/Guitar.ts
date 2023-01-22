@@ -1,3 +1,5 @@
+import { CommonImage } from './CommonImage'
+
 export interface Guitar {
   name: string
   createdAt: Date
@@ -6,18 +8,7 @@ export interface Guitar {
   description: string
   price: number
   url: string
-  image: {
-    data: {
-      attributes: {
-        formats: {
-          medium: {
-            url: string
-          }
-        }
-        url: string
-      }
-    }
-  }
+  image: CommonImage
 }
 
 export interface GuitarResponse {
