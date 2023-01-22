@@ -1,50 +1,41 @@
-# Welcome to [Astro](https://astro.build)
+# GuitarLA - Astro
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+Aplicación de venta de guitarras, con blog propio. Este proyecto se alimenta de una API empleando Strapi y almacenando la información en una base de datos PostgreSQL.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Está realizado empleando Astro.
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+## Tecnologías
 
+### Frontend
 
-## 🚀 Project Structure
+La aplicación ha sido creada con las siguientes tecnologías:
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Astro**
+- **CSS**
+- **Typescript**
 
+### Backend
+
+- **Strapi**
+
+## Almacenamiento de datos
+
+El almacenamiento de datos se lleva a cabo en una base de datos PostgreSQL desplegada en render.com, con la cual se comunica la API de Strapi.
+
+## Despliegue local
+
+Para un despliegue local de la aplicación, simplemente clona el repositorio y en primer lugar instala los paquetes:
+
+```bash
+npm install
 ```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+
+Seguidamente, levanta la aplicación con:
+
+```bash
+npm run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Podrás acceder a la aplicación en tu navegador accediento a [http://localhost:3000](http://localhost:3000).
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Recuerda que esta aplicación **requiere de una comunicación con una API**, construida en este caso con Strapi. Si estás interesado realmente en emplearlo localmente, tendrás que contar con una API. Puedes ponerte en contacto conmigo si quieres una mano.
