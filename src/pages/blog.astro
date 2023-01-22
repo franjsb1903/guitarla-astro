@@ -2,17 +2,10 @@
 import Layout from '../layouts/Layout.astro'
 import Post from '../components/Post.astro'
 
-import type { Post as PostType } from '../models/Post'
+import type { PostResponse } from '../models/Post'
 
 const url = `${import.meta.env.PUBLIC_API_URL}/posts?populate=image`
-const {
-  data,
-}: {
-  data: Array<{
-    id: number
-    attributes: PostType
-  }>
-} = await fetch(url).then(res => res.json())
+const { data }: PostResponse = await fetch(url).then(res => res.json())
 ---
 
 <Layout

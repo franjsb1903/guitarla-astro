@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Guitar from '../components/Guitar.astro'
+import Post from '../components/Post.astro'
 
 import type { GuitarResponse } from '../models/Guitar'
 import type { PostResponse } from '../models/Post'
@@ -8,7 +9,7 @@ import type { PostResponse } from '../models/Post'
 const urlGuitarras = `${import.meta.env.PUBLIC_API_URL}/guitars?populate=image`
 const urlBlogs = `${import.meta.env.PUBLIC_API_URL}/posts?populate=image`
 
-const [{ data: guitars }, { data: blogs }] = (await Promise.all([
+const [{ data: guitars }, { data: posts }] = (await Promise.all([
   fetch(urlGuitarras).then(res => res.json()),
   fetch(urlBlogs).then(res => res.json()),
 ])) as [GuitarResponse, PostResponse]
@@ -25,6 +26,13 @@ const [{ data: guitars }, { data: blogs }] = (await Promise.all([
       {guitars?.map(guitar => <Guitar guitar={guitar.attributes} />)}
     </div>
   </main>
+
+  <section class="contenedor">
+    <h2 class="heading">Blog</h2>
+    <div class="grid">
+      {posts?.map(post => <Post post={post.attributes} />)}
+    </div>
+  </section>
 </Layout>
 
 <style></style>
